@@ -1,7 +1,14 @@
+import 'dotenv/config';
 import express from 'express';
 import router from './router';
+import { connectDB } from './config/db';
 
 const app = express();
+connectDB();
+
+// Read data form JSON bodys (forms, json, etc)
+app.use(express.json());
+
 
 app.use('/', router);
 
