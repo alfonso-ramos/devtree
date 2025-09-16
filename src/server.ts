@@ -9,7 +9,6 @@ connectDB();
 // Read data form JSON bodys (forms, json, etc)
 app.use(express.json());
 
-
 app.use('/', router);
 
 export default app;

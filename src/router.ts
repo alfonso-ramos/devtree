@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { body } from 'express-validator'
 import { createAccount, login } from './handlers';
+import { hanldeInputError } from './middleware/validation';
 
 const router = Router();
 
@@ -20,6 +21,7 @@ router.post('/auth/register',
         .withMessage('La constraseña no puede ir vacia')
         .isLength({ min: 8 })
         .withMessage('La constraseña debe contener al menos 8 caracteres'),
+    hanldeInputError,
     createAccount
 );
 
@@ -30,6 +32,7 @@ router.post('/auth/login',
     body('password')
         .notEmpty()
         .withMessage('La contraseña es obligatoria'),
+    hanldeInputError,
     login
 )
 
